@@ -9,7 +9,7 @@
 typedef struct Node
 {
 	int data;	/*数据域*/
-	struct Node *p;	/*指针域*/ 
+	struct Node *pNext;	/*指针域*/ 
 
 } NODE, *PNODE, LINKLIST, PLINKLIST;
 
