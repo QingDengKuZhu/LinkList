@@ -14,7 +14,7 @@ pL为指向单链表的指针,且pL不为NULL.
 PLINKLIST InitList(void);
 
 /*销毁单链表.*/
-void DestroyList(PLINKLIST pL);
+void DestroyList(PLINKLIST *ppL);
 
 /*将单链表清空.*/
 void ClearList(PLINKLIST pL);
