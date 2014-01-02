@@ -11,7 +11,7 @@ PLINKLIST InitList(void)
 		exit(ERROR);
 	}
 	
-	pHead->data = NULL;	/*初始时,单链表为空,头结点指针域为空.*/
+	pHead->pNext = NULL;	/*初始时,单链表为空,头结点指针域为空.*/
 	
 	return pHead;
 
@@ -231,6 +231,7 @@ void TraveList(PLINKLIST pL)
 	while (p)
 	{
 		printf("%d ", p->data);
+		p = p->pNext;
 	}
 
 	return;
