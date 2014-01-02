@@ -29,7 +29,7 @@ size_t ListLength(PLINKLIST pL);
 /*获取单链表中第pos个元素.若操作成功,函数返回OK,*e保存满足条件的结点的值;若操作失败,函数返回FAILE,*e为垃圾值.*/
 STATUS GetElem(PLINKLIST pL, size_t pos, int *e);
 
-/*返回单链表中第一个与v相等的元素的位序(从1开始).若成功函数返回相应的位序;否者返回0*/
+/*返回单链表中第一个与v相等的元素的位序(从1开始).若成功函数返回相应的位序;否者返回0.*/
 size_t LocateElem(PLINKLIST pL, int v);
 
 /*在单链表中第pos个位置之前插入新的数据元素v(1 <= pos <= ListLength(pL)+1).若成功,函数返回OK;否者返回FAILE.*/
