@@ -162,7 +162,7 @@ STATUS InsertList(PLINKLIST pL, size_t pos, int v)
 				pNew = (PNODE)malloc(sizeof(NODE));
 				if (!pNew)
 				{
-					printf("新结点插入失败!\n");
+					printf("动态生成新结点失败!\n");
 					exit(ERROR);
 				}
 
