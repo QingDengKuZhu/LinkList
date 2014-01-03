@@ -141,7 +141,6 @@ size_t LocateElem(PLINKLIST pL, int v)
 STATUS InsertList(PLINKLIST pL, size_t pos, int v)
 {
 	PNODE p = pL;
-	PNODE q = NULL;
 	PNODE pNew = NULL;
 	size_t cur = 1;
 
@@ -155,37 +154,35 @@ STATUS InsertList(PLINKLIST pL, size_t pos, int v)
 	*/
 	while (p)
 	{
-		if (pos == cur)
+		if (pos == cur)	/*找到插入点.*/
 		{
-			q = p->pNext;
-			break;	/*在此处跳出while循环,p指向插入点*/
+				/*
+				**插入数据.
+				*/
+				pNew = (PNODE)malloc(sizeof(NODE));
+				if (!pNew)
+				{
+					printf("新结点插入失败!\n");
+					exit(ERROR);
+				}
+
+				pNew->data = v;
+
+				pNew->pNext = p->pNext;
+				p->pNext = pNew;
+
+				return OK;
+
 		}
 
 		p = p->pNext;
 		++cur;
 	}
 
-	if (!p)	/*当p为NULL时,表示寻找插入点时,没有找到插入点,即pos>LengthList(pL)+1.*/
-	{
-		return FAILE;
-	}
-
 	/*
-	**插入数据.
+	**未找到插入点.
 	*/
-	pNew = (PNODE)malloc(sizeof(NODE));
-	if (!pNew)
-	{
-		printf("新结点插入失败!\n");
-		exit(ERROR);
-	}
-
-	pNew->data = v;
-
-	pNew->pNext = q;
-	p->pNext = pNew;
-
-	return OK;
+	return FAILE;
 
 }
 
