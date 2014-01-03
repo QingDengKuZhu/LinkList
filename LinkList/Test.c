@@ -21,7 +21,7 @@ void Menu(void)
 {
 	system("cls");
 	gotoxy(10, 5);                        /*在文本窗口中设置光标*/
-	cprintf("			顺序线性表测试			");
+	cprintf("			单链表测试			");
 	gotoxy(8, 8);
 	cprintf("-----------------------------Menu-----------------------------\n");
 	gotoxy(8, 9);
