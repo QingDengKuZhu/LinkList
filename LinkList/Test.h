@@ -11,15 +11,15 @@ void Menu(void);
 
 
 /*光标定位*/
-void gotoxy(short x, short y);
+void gotoxy(const short x, const short y);
 
 
 /*输入的位序*/
-size_t InputPos(char notice[]);
+size_t InputPos(const char notice[]);
 
 
 /*输入结点数据*/
-int InputValue(char notice[]);
+int InputValue(const char notice[]);
 
 
 #endif

@@ -5,7 +5,7 @@
 #include <conio.h>
 
 
-void gotoxy(short x, short y)
+void gotoxy(const short x, const short y)
 {
 	COORD pos;	/*COORD在windows.h中定义*/
 	pos.X = x;
@@ -44,7 +44,7 @@ void Menu(void)
     return;
 }
 
-size_t InputPos(char notice[])
+size_t InputPos(const char notice[])
 {
 	int pos;		/*保存待输入的位序*/
 	unsigned n;		/*保存scanf的返回值*/
@@ -65,7 +65,7 @@ size_t InputPos(char notice[])
 	return (size_t)pos;
 }
 
-int InputValue(char notice[])
+int InputValue(const char notice[])
 {	
 	int e;
 	unsigned n;

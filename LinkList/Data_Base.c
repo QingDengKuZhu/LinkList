@@ -93,7 +93,7 @@ size_t ListLength(PLINKLIST pL)
 
 
 
-STATUS GetElem(PLINKLIST pL, size_t pos, Elem *e)
+STATUS GetElem(PLINKLIST pL, const size_t pos, Elem *e)
 {
 	size_t cur = 1;			/*位序计数.*/
 	PNODE p = pL->pNext;	/*指向首节点(如果存在的话).*/
@@ -116,7 +116,7 @@ STATUS GetElem(PLINKLIST pL, size_t pos, Elem *e)
 
 
 
-size_t LocateElem(PLINKLIST pL, Elem v)
+size_t LocateElem(PLINKLIST pL, const Elem v)
 {
 	size_t pos = 1;
 	PNODE p  = pL->pNext;
@@ -138,7 +138,7 @@ size_t LocateElem(PLINKLIST pL, Elem v)
 
 
 
-STATUS InsertList(PLINKLIST pL, size_t pos, Elem v)
+STATUS InsertList(PLINKLIST pL, const size_t pos, const Elem v)
 {
 	PNODE p = pL;
 	PNODE pNew = NULL;
@@ -188,7 +188,7 @@ STATUS InsertList(PLINKLIST pL, size_t pos, Elem v)
 
 
 
-STATUS DeleteList(PLINKLIST pL, size_t pos, Elem *e)
+STATUS DeleteList(PLINKLIST pL, const size_t pos, Elem *e)
 {
 	PNODE p = pL->pNext;
 	PNODE q = pL;
