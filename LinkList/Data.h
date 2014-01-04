@@ -6,9 +6,11 @@
 
 #include "Main_First.h"
 
+typedef int Elem;
+
 typedef struct Node
 {
-	int data;	/*数据域*/
+	Elem data;	/*数据域*/
 	struct Node *pNext;	/*指针域*/ 
 
 } NODE, *PNODE, LINKLIST, *PLINKLIST;

@@ -12,8 +12,8 @@ int main(void)
 {
 	int select;		/*保存选择变量*/
 	size_t pos;		/*位序*/
-	int e;			/*保存从函数返回的结点的值*/
-	int v;			/*保存传递给函数的结点的值*/
+	Elem e;			/*保存从函数返回的结点的值*/
+	Elem v;			/*保存传递给函数的结点的值*/
 	
 	size_t i= 0;
 	PLINKLIST pL = InitList();
