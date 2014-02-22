@@ -181,6 +181,20 @@ int main(void)
 //			getchar();
 //			break;
 //			
+		case 10:	/*求中间结点*/
+			{
+				PNODE pm = FindMidNode(pL);
+				if(!pm)
+				{
+					printf("不存在中间结点!\n");
+				}
+				else
+				{
+					printf("中间结点为:%d.", pm->data);
+				}
+
+				getchar();
+			}
 		default:
 			printf("请重新选择!\n");
 			
