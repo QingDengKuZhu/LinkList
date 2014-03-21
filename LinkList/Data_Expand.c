@@ -3,7 +3,7 @@
 #include "Data_Base.h"
 #include "Data_Expand.h"
 
-PNODE FindMidNode(PLINKLIST pL)
+NODE *FindMidNode(const LINKLIST *pL)
 {
 	/*法一
 	**首先遍历一遍单链表以确定单链表的长度L.
@@ -11,7 +11,7 @@ PNODE FindMidNode(PLINKLIST pL)
 	**表的中间结点.
 	**算法复杂度为:O(L+L/2) = O(3L/2).
 	
-	PNODE p = pL->pNext;
+	NODE *p = pL->pNext;
 	size_t i = 1;
 	size_t length = ListLength(pL);
 
@@ -27,8 +27,8 @@ PNODE FindMidNode(PLINKLIST pL)
 	/*法二(推荐)
 	**利用快慢指针
 	*/
-	PNODE mid = pL;
-	PNODE p = pL;
+	NODE *mid = (NODE *)pL;/*必须转换, const类型不能赋值给非const类型, 反之却可以.*/
+	NODE *p = (NODE *)pL;
 
 	while(p && p->pNext) /*p和p->pNext的顺序绝对不能调换!!!*/
 	{

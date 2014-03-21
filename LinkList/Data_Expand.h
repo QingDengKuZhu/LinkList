@@ -10,6 +10,6 @@
 
 
 /*快速找到未知长度单链表的中间结点.若找到该结点,返回地址;否则,返回NULL.*/
-PNODE FindMidNode(PLINKLIST pL);
+NODE *FindMidNode(const LINKLIST *pL);
 
 #endif

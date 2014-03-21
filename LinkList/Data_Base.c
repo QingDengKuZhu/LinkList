@@ -2,9 +2,9 @@
 #include "Main_First.h"
 #include "Data_Base.h"
 
-PLINKLIST InitList(void)
+LINKLIST * InitList(void)
 {
-	PNODE pHead = (PNODE)malloc(sizeof(NODE));	/*生成一个头指针.*/
+	NODE *pHead = (NODE *)malloc(sizeof(NODE));	/*生成一个头指针.*/
 	if (!pHead)
 	{
 		printf("头结点动态内存分配错误!\n");
@@ -14,15 +14,14 @@ PLINKLIST InitList(void)
 	pHead->pNext = NULL;	/*初始时,单链表为空,头结点指针域为空.*/
 	
 	return pHead;
-
 }
 
 
 
-void DestroyList(PLINKLIST *ppL)
+void DestroyList(LINKLIST **ppL)
 {
-	/*函数参数不能是PLINKLIST pL, 因为这样会导致pL不能修改,而在本函数中,头指针最后必须为NULL.*/
-	PNODE q = NULL;
+	/*函数参数不能是LINKLIST * pL, 因为这样会导致pL不能修改,而在本函数中,头指针最后必须为NULL.*/
+	NODE *q = NULL;
 	
 	while (*ppL)
 	{
@@ -34,15 +33,14 @@ void DestroyList(PLINKLIST *ppL)
 	/*不需要再设定(*ppL)为空,因为此时*ppL已经为NULL,这是与ClearList()的区别.*/
 	
 	return;
-
 }
 
 
 
-void ClearList(PLINKLIST pL)
+void ClearList(LINKLIST *pL)
 {
-	PNODE p = pL->pNext;	/*指向首节点(如果存在的话).*/
-	PNODE q = NULL;
+	NODE *p = pL->pNext;	/*指向首节点(如果存在的话).*/
+	NODE *q = NULL;
 
 	while (p)
 	{
@@ -54,12 +52,11 @@ void ClearList(PLINKLIST pL)
 	pL->pNext = NULL;	/*必须将pL->pNext设置为NULL,因为头指针存在,链表为空(相当于回到了初始化后(InitList()后)状态).*/
 
 	return;
-
 }
 
 
 
-BOOL ListEmpty(PLINKLIST pL)
+BOOL ListEmpty(const LINKLIST *pL)
 {
 	if (!(pL->pNext))	/*只需判断头结点指针域是否为NULL就行,不必求得单链表长度是否为0.*/
 	{
@@ -69,16 +66,15 @@ BOOL ListEmpty(PLINKLIST pL)
 	{
 		return FALSE;
 	}
-
 }
 
 
 
-size_t ListLength(PLINKLIST pL)
+size_t ListLength(const LINKLIST *pL)
 {
 	/*不能使用头结点数据域存放链式线性表长度,因为当且仅当数据域类型为int时,才能使用首节点的数据域存储链式线性表的长度.*/
 	
-	PNODE p = pL->pNext;
+	NODE *p = pL->pNext;
 	size_t length = 0;
 
 	while (p)
@@ -88,15 +84,14 @@ size_t ListLength(PLINKLIST pL)
 	}
 
 	return length;
-
 }
 
 
 
-STATUS GetElem(PLINKLIST pL, const size_t pos, Elem *e)
+STATUS GetElem(const LINKLIST *pL, const size_t pos, Elem *e)
 {
 	size_t cur = 1;			/*位序计数.*/
-	PNODE p = pL->pNext;	/*指向首节点(如果存在的话).*/
+	NODE *p = pL->pNext;	/*指向首节点(如果存在的话).*/
 
 	while (p)
 	{
@@ -111,15 +106,14 @@ STATUS GetElem(PLINKLIST pL, const size_t pos, Elem *e)
 	}
 
 	return FAILE;
-
 }
 
 
 
-size_t LocateElem(PLINKLIST pL, const Elem v)
+size_t LocateElem(const LINKLIST *pL, const Elem v)
 {
 	size_t pos = 1;
-	PNODE p  = pL->pNext;
+	NODE *p  = pL->pNext;
 
 	while (p)
 	{
@@ -133,15 +127,14 @@ size_t LocateElem(PLINKLIST pL, const Elem v)
 	}
 
 	return 0;
-
 }
 
 
 
-STATUS InsertList(PLINKLIST pL, const size_t pos, const Elem v)
+STATUS InsertList(LINKLIST *pL, const size_t pos, const Elem v)
 {
-	PNODE p = pL;
-	PNODE pNew = NULL;
+	NODE *p = pL;
+	NODE *pNew = NULL;
 	size_t cur = 1;
 
 	if (pos<1)	/*判断插入点是否合理.*/
@@ -159,7 +152,7 @@ STATUS InsertList(PLINKLIST pL, const size_t pos, const Elem v)
 				/*
 				**插入数据.
 				*/
-				pNew = (PNODE)malloc(sizeof(NODE));
+				pNew = (NODE *)malloc(sizeof(NODE));
 				if (!pNew)
 				{
 					printf("动态生成新结点失败!\n");
@@ -183,15 +176,14 @@ STATUS InsertList(PLINKLIST pL, const size_t pos, const Elem v)
 	**未找到插入点.
 	*/
 	return FAILE;
-
 }
 
 
 
-STATUS DeleteList(PLINKLIST pL, const size_t pos, Elem *e)
+STATUS DeleteList(LINKLIST *pL, const size_t pos, Elem *e)
 {
-	PNODE p = pL->pNext;
-	PNODE q = pL;
+	NODE *p = pL->pNext;
+	NODE *q = pL;
 	size_t cur = 1;
 
 	if (pos < 1)	/*判断插入点是否合理.*/
@@ -216,14 +208,13 @@ STATUS DeleteList(PLINKLIST pL, const size_t pos, Elem *e)
 	}
 
 	return FAILE;
-
-	}
-
+}
 
 
-void TraveList(PLINKLIST pL)
+
+void TraveList(const LINKLIST *pL)
 {
-	PNODE p = pL->pNext;
+	NODE *p = pL->pNext;
 
 	while (p)
 	{
@@ -232,7 +223,6 @@ void TraveList(PLINKLIST pL)
 	}
 
 	return;
-	
 }
 
 

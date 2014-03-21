@@ -13,7 +13,7 @@ typedef struct Node
 	Elem data;	/*数据域*/
 	struct Node *pNext;	/*指针域*/ 
 
-} NODE, *PNODE, LINKLIST, *PLINKLIST;
+} NODE, LINKLIST;
 
 
 #endif

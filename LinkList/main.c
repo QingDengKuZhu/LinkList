@@ -16,7 +16,7 @@ int main(void)
 	Elem v;			/*保存传递给函数的结点的值*/
 	
 	size_t i= 0;
-	PLINKLIST pL = InitList();
+	LINKLIST * pL = InitList();
 	srand((int)time(NULL));
 	while (i < 10)
 	{
@@ -183,7 +183,7 @@ int main(void)
 //			
 		case 10:	/*求中间结点*/
 			{
-				PNODE pm = FindMidNode(pL);
+				NODE *pm = FindMidNode(pL);
 				if(!pm)
 				{
 					printf("不存在中间结点!\n");
