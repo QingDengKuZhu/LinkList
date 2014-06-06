@@ -186,7 +186,7 @@ STATUS DeleteList(LINKLIST *pL, const size_t pos, Elem *e)
 	NODE *q = pL;
 	size_t cur = 1;
 
-	if (pos < 1)	/*判断插入点是否合理.*/
+	if (pos < 1)	/*判断删除点是否合理.*/
 	{
 		return FAILE;
 	}
